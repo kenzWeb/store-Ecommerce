@@ -11,7 +11,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 export default function CartPage() {
-  const cart = useSelector((state) => state.cart.items);
+  const cart = useSelector((state: { cart: { items: any[] } }) => state.cart.items);
   const dispatch = useDispatch();
 
   const subtotal = cart.reduce((total, item) => {

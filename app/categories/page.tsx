@@ -14,7 +14,7 @@ import {
 import { Tag } from "lucide-react";
 
 export default function CategoriesPage() {
-  const { data: categories, isLoading } = useGetCategoriesQuery({});
+  const { data: categories, isLoading } = useGetCategoriesQuery();
   const dispatch = useDispatch();
 
   if (isLoading) {
