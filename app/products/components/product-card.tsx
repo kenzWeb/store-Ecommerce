@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux';
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { useTranslation } from 'react-i18next';
+import Link from 'next/link';
 
 interface Product {
   id: number;
@@ -39,14 +40,16 @@ export function ProductCard({ product }: ProductCardProps) {
 
   return (
     <Card className="overflow-hidden">
-      <div className="relative h-48">
-        <Image
-          src={product.image}
-          alt={product.title}
-          fill
-          className="object-contain p-4"
-        />
-      </div>
+      <Link href={`/products/${product.id}`}>
+        <div className="relative h-48 transition-transform hover:scale-105">
+          <Image
+            src={product.image}
+            alt={product.title}
+            fill
+            className="object-contain p-4"
+          />
+        </div>
+      </Link>
       <CardContent className="p-4">
         <div className="flex gap-2 mb-2">
           {product.color && (
@@ -60,7 +63,11 @@ export function ProductCard({ product }: ProductCardProps) {
             </Badge>
           )}
         </div>
-        <h3 className="font-semibold text-lg mb-2 line-clamp-1">{product.title}</h3>
+        <Link href={`/products/${product.id}`}>
+          <h3 className="font-semibold text-lg mb-2 line-clamp-1 hover:underline">
+            {product.title}
+          </h3>
+        </Link>
         <p className="text-muted-foreground text-sm mb-2 line-clamp-2">
           {product.description}
         </p>

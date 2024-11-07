@@ -33,11 +33,7 @@ export default function ProductsPage() {
 
   if (error) {
     return (
-      <div className="container mx-auto px-4 py-8">
-        <div className="text-center text-red-500">
-          {error && 'status' in error ? `Error: ${error.status}` : 'An unknown error occurred'}
-        </div>
-      </div>
+      <div>Error: { 'status' in error ? `Status: ${error.status}` : error.message }</div>
     );
   }
 

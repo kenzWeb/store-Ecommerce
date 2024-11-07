@@ -9,6 +9,8 @@ interface Product {
   category: string;
   image: string;
   rating: { rate: number; count: number };
+  color?: string;
+  size?: string;
 }
 
 export const apiSlice = createApi({
@@ -20,7 +22,6 @@ export const apiSlice = createApi({
       async onQueryStarted(arg, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
-          // Add mock color and size data since the API doesn't provide them
           const productsWithAttributes = data.map(product => ({
             ...product,
             color: ['black', 'white', 'red', 'blue', 'green'][Math.floor(Math.random() * 5)],
@@ -32,6 +33,14 @@ export const apiSlice = createApi({
         }
       },
     }),
+    getProduct: builder.query<Product, string>({
+      query: (id) => `products/${id}`,
+      transformResponse: (response: Product) => ({
+        ...response,
+        color: ['black', 'white', 'red', 'blue', 'green'][Math.floor(Math.random() * 5)],
+        size: ['xs', 's', 'm', 'l', 'xl'][Math.floor(Math.random() * 5)]
+      }),
+    }),
     getCategories: builder.query<string[], void>({
       query: () => "products/categories",
     }),
@@ -40,5 +49,6 @@ export const apiSlice = createApi({
 
 export const {
   useGetProductsQuery,
+  useGetProductQuery,
   useGetCategoriesQuery,
 } = apiSlice;

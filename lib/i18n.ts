@@ -8,7 +8,9 @@ const resources = {
       products: 'Products',
       categories: 'Categories',
       cart: 'Cart',
-      search: 'Search',
+      search: 'Search products...',
+      'Loading...': 'Loading...',
+      'No results found.': 'No results found.',
       filters: {
         color: 'Color',
         size: 'Size',
@@ -37,7 +39,9 @@ const resources = {
       products: 'Товары',
       categories: 'Категории',
       cart: 'Корзина',
-      search: 'Поиск',
+      search: 'Поиск товаров...',
+      'Loading...': 'Загрузка...',
+      'No results found.': 'Ничего не найдено.',
       filters: {
         color: 'Цвет',
         size: 'Размер',
